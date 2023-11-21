@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marser Gastrobar</title>
+    <link rel="stylesheet" href="Marser.css">
+    <link rel="icon" href="https://i.ibb.co/vD9pfvn/Marser-Logo.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="/css/marser.css" />
+    <link rel="stylesheet" href="/css/csshamburguesa.css" />
+
+          <script defer src="/js/index.js"></script>
+          <script defer type="text/javascript">
+            function googleTranslateElementInit() {
+              new google.translate.TranslateElement({
+                pageLanguage: 'es', // El idioma en el que está escrita tu página
+                includedLanguages: 'en,es,pt,fr', // Los idiomas a los que el usuario puede cambiar
+                layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+              }, 'google_translate_element');
+            }
+          </script>
+          <script defer type="text/javascript"
+            src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+          </script>
+</head>
+<body>
+
+    <header class="header">
+        <nav class="nav"> 
+          <a th:href="@{/}"><img src="https://i.ibb.co/hdZxgL6/Logo-Hotel-Sin-Fondo.png" alt="logotipo" class="logo nav-link"></a> 
+          <button class="nav-toggle" aria-label="Abrir menú">
+            <img src="https://i.ibb.co/dtdvY67/hamburguesa.png" alt="Menu">
+          </button>
+          <ul class="nav-menu">
+            <li class="nav-menu-item">
+              <a th:href="@{/reservaciones}" class="nav-menu-link nav-link">Rerservaciones</a>
+            </li>
+            <li class="nav-menu-item">
+                <a th:href="@{/marser}" class="nav-menu-link nav-link nav-menu-link_active"
+                  >Marser</a>
+            </li>
+            <li class="nav-menu-item">
+                <a th:href="@{/galeria}" class="nav-menu-link nav-link">Galería</a>
+              </li>
+            <li class="nav-menu-item">
+              <a th:href="@{/nosotros}" class="nav-menu-link nav-link">Nosotros</a>
+            </li>
+            <li class="nav-menu-item">
+                <a th:href="@{/}" class="nav-menu-link nav-link">Inicio</a>
+            </li>
+            <li class="nav-menu-item">
+              <a sec:authorize="!isAuthenticated()" th:href="@{/login}" class="nav-menu-link nav-link"><img src="https://i.ibb.co/RYGs74X/Login.png" alt="Login"></a>
+                    <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="action_btn nav-menu-link nav-link"><img src="https://i.ibb.co/Hg0Gzqb/logout.png" alt="Cerrar Sesión"></a>        
+                  </li>
+            <li class="nav-menu-item">
+              <a><div id="google_translate_element"></div></a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <nav class="informacion">
+        <h4> Marser Gastrobar</h4>
+        <div class="logo-marser">
+          <img src="https://i.ibb.co/vD9pfvn/Marser-Logo.png" alt="Logo Marser Gastrobar">
+        </div>
+    </nav>
+    <div class="menu">
+
+      <div class="categoria">
+        <h1>ENTRADAS</h1>
+  
+        <div class="plato">
+          <div class="nombre-entrada">SOPITA DE SANCOCHO</div>
+          <div class="precio-entrada">$7.000</div>
+        </div>
+  
+        <div class="plato">
+          <div class="nombre-entrada">MIX DE CHORIZO, MORCILLA, CHUNCHULLA</div>
+          <div class="precio-entrada">$17.000</div>
+        </div>
+  
+        <div class="plato">
+          <div class="nombre-entrada">PANCETA DE CAMARONES</div>
+          <div class="precio-entrada">$22.000</div>
+        </div>
+  
+        <div class="plato">
+          <div class="nombre-entrada">CALAMARES APANADOS DE LA ABUELA</div>
+          <div class="precio-entrada">$20.000</div>
+        </div>
+  
+        <div class="plato">
+          <div class="nombre-entrada">CHICHARRONES A LA MARSER EN SALSA BBQ, MOSTAZA, DJNON</div>
+          <div class="precio-entrada">$17.000</div>
+        </div>
+    
+      </div>
+
+        <div class="categoria">
+          <h1>PESCADOS Y MARISCOS</h1>
+    
+          <div class="plato">
+            <div class="nombre">MOJARRA CRIOLLA</div>
+            <div class="precio">$32.000</div>
+            <div class="descripcion">Acompañada de arroz blanco, ensalada, patacón y consomé.</div>
+          </div>
+    
+          <div class="plato">
+            <div class="nombre">SALMÓN EN SALSA DE CHOLUPA</div>
+            <div class="precio">$43.000</div>
+            <div class="descripcion">Acompañada de arroz blanco, papa a la francesa y ensalada.</div>
+          </div>
+          
+          <div class="plato">
+            <div class="nombre">SALMÓN GRILLÉ</div>
+            <div class="precio">$43.000</div>
+            <div class="descripcion">Delicioso salmón a la parrilla en base de puré de papa, ensalada.</div>
+          </div>
+
+          <div class="plato">
+            <div class="nombre">CAZUELA DE MARISCOS</div>
+            <div class="precio">$43.000</div>
+            <div class="descripcion">Delicioso mix de mariscos (pulpo, calamares, chipi chipi. almejas, camarón), acompañado de arroz blanco y patacones.</div>
+          </div>
+          <div class="plato">
+            <div class="nombre">TRUCHA AL AJILLO</div>
+            <div class="precio">$32.000</div>
+            <div class="descripcion">Al papilón, acompañada de arroz blanco, patacón y ensalada.</div>
+          </div>
+        </div>
+    
+        <div class="categoria">
+          <h1>SANDWICH</h1>
+    
+          <div class="plato">
+            <div class="nombre">SANDWICH FLORENTINO</div>
+            <div class="precio">$18.000</div>
+            <div class="descripcion">En pan artesanal, filete de pollo, lechuga tomate y cebolla, albahaca, crema holandesa y queso, acompañado de ensalada de la casa.</div>
+          </div>
+        </div>
+
+        <class="categoria">
+          <h1>TÍPICOS</h1>
+    
+          <div class="plato">
+            <div class="nombre">SANCOCHO TRIFÁSICO</div>
+            <div class="precio">$32.000</div>
+            <div class="descripcion">Sopa, pollo, costilla de res, costilla de cerdo. papa, yuca, plátano, mazorca, arroz, aguacate.</div>
+          </div>
+          
+          <div class="plato">
+            <div class="nombre">BANDEJA PAISA</div>
+            <div class="precio">$35.000</div>
+            <div class="descripcion">Cazuela de frijoles, arroz, plátano, arepa, chicharrón, huevo, chorizo, aguacate, carne.</div>
+          </div>
+          
+          <div class="plato">
+            <div class="nombre">SUDADO DE POLLO CAMPESINO</div>
+            <div class="precio">$28.000</div>
+            <div class="descripcion">Sopita de la casa, pierna pernil, acompañado de arroz blanco, papa, yuca, platano, envuelto en hoja de plátano.</div>
+          </div>
+
+        <div class="categoria">
+            <h1>CARNES</h1>
+      
+            <div class="plato">
+              <div class="nombre">CHURRASCO</div>
+              <div class="precio">$37.000</div>
+              <div class="descripcion">Exquisito corte de lomo ancho madurado a la parrilla acompañado de papa, ensalada y arepa.</div>
+            </div>
+            
+            <div class="plato">
+              <div class="nombre">FILET MIGNON</div>
+              <div class="precio">$39.000</div>
+              <div class="descripcion">Delicioso lomo fino envuelto en tocineta, en salsa de miglas con champiñones acompañado de papa a la francesa. ensalada y arroz blanco.</div>
+            </div>
+            
+            <div class="plato">
+              <div class="nombre">LOMO A LA PIMIENTA</div>
+              <div class="precio">$39.000</div>
+              <div class="descripcion">Delicioso lomo fino bañado en salsa de pimienta verde acompañado de papa a la francesa, ensalada y arroz blanco.</div>
+            </div>
+            
+            <div class="plato">
+              <div class="nombre">LOMO EMPERADOR A LA MARSER</div>
+              <div class="precio">$72.000</div>
+              <div class="descripcion">Delicioso lomito de res a la parrilla en reducción de salsa holandesa con langostino en puré de papa, acompañado de arroz y ensalada.</div>
+            </div>
+        </div>
+
+        <div class="categoria">
+          <h1>POLLOS</h1>
+    
+          <div class="plato">
+            <div class="nombre">POLLO A LA MARSER</div>
+            <div class="precio">$35.000</div>
+            <div class="descripcion">Delicioso filete de pollo, bañado en salsa de melocotón gratinado con queso mozzarella, acompañado de arroz blanco. papa a la francesa y ensalada.</div>
+          </div>
+          
+          <div class="plato">
+            <div class="nombre">POLLO MEDITERRANEO</div>
+            <div class="precio">$34.000</div>
+            <div class="descripcion">Delicioso filete de pollo bañado en salsa de camarón acompañado de pasta, papa a la francesa y ensalada.</div>
+          </div>
+        </div>
+
+        <div class="categoria">
+          <h1>ACOMPAÑAMIENTOS</h1>
+          <div class="columna-acompanamientos">
+            <div class="plato">
+              <div class="nombre-acompanamiento">Arroz</div>
+              <div class="precio-acompanamiento">$4.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-acompanamiento">Ensalada</div>
+              <div class="precio-acompanamiento">$4.000</div>
+            </div>
+          </div>
+          <div class="columna-acompanamientos">
+            <div class="plato">
+              <div class="nombre-acompanamiento">Papa a la francesa</div>
+              <div class="precio-acompanamiento">$5.500</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-acompanamiento">Pataconas</div>
+              <div class="precio-acompanamiento">$5.500</div>
+            </div>    
+            <div class="plato">
+              <div class="nombre-acompanamiento">Sopa del día</div>
+              <div class="precio-acompanamiento">$5.500</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="categoria">
+          <h1>BEBIDAS</h1>
+            <div class="plato">
+              <div class="nombre-bebida">Coca Cola PET 400ml</div>
+              <div class="precio-bebida">$4.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Coca Cola PET ZERO</div>
+              <div class="precio-bebida">$4.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Soda</div>
+              <div class="precio-bebida">$4.000</div>
+            </div>
+    
+            <div class="plato">
+              <div class="nombre-bebida">Botella de Agua</div>
+              <div class="precio-bebida">$3.500</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Té</div>
+              <div class="precio-bebida">$5.000</div>
+            </div>
+          <h2>CERVEZAS</h2>
+            <div class="plato">
+              <div class="nombre-bebida">Corona</div>
+              <div class="precio-bebida">$10.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Póker</div>
+              <div class="precio-bebida">$5.500</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Club Colombia dorada</div>
+              <div class="precio-bebida">$6.500</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Águila light</div>
+              <div class="precio-bebida">$5.500</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Águila negra</div>
+              <div class="precio-bebida">$5.500</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Budweiser</div>
+              <div class="precio-bebida">$5.500</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Águila michelada sencilla</div>
+              <div class="precio-bebida">$6.500</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Michelada Corona con mango</div>
+              <div class="precio-bebida">$15.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Michelada Corona frutos rojos</div>
+              <div class="precio-bebida">$15.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Michelada Tradicional con mango</div>
+              <div class="precio-bebida">$9.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Michelada Tradicional frutos rojos</div>
+              <div class="precio-bebida">$9.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Michelada Budweiser</div>
+              <div class="precio-bebida">$10.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Soda saborizada </div>
+              <p>(Cholupa, Mora, Fresa,Maracuyá, Kiwi, Lychee)</p>
+              <div class="precio-bebida">$10.000</div>
+            </div> 
+          <h2>COCTELES</h2>
+            <h4>¡¡REQUIERE CEDULA!!</h4>
+            <div class="plato">
+              <div class="nombre-bebida">Mojito Tradicional</div>
+              <div class="precio-bebida">$12.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Capitán America</div>
+              <div class="precio-bebida">$12.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Café Alexander</div>
+              <div class="precio-bebida">$12.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Gin tonie tradicional</div>
+              <div class="precio-bebida">$16.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Gin tonie frutos rojos</div>
+              <div class="precio-bebida">$18.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Piña Colada</div>
+              <div class="precio-bebida">$16.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Sex on the beach</div>
+              <div class="precio-bebida">$16.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Jarra Ginger tipo Coctel</div>
+              <div class="precio-bebida">$22.000</div>
+            </div>
+          <h2>JUGOS</h2>
+            <h3>Cholupa, Maracuyá, Mora y Fresa </h3>
+            <div class="plato">
+              <div class="nombre-bebida">Jugo en agua personal</div>
+              <div class="precio-bebida">$9.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Jugo en leche personal</div>
+              <div class="precio-bebida">$10.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Jarra mediana en agua</div>
+              <div class="precio-bebida">$16.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Jarra mediana en leche</div>
+              <div class="precio-bebida">$18.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Jarra Grande en agua</div>
+              <div class="precio-bebida">$16.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Jarra Grande en leche</div>
+              <div class="precio-bebida">$18.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Limonada personal coco</div>
+              <div class="precio-bebida">$10.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Limonada personal hierbabuena</div>
+              <div class="precio-bebida">$10.000</div>
+            </div>
+            <div class="plato">
+              <div class="nombre-bebida">Limonada personal cerezada</div>
+              <div class="precio-bebida">$10.000</div>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+            <img src="https://i.ibb.co/hdZxgL6/Logo-Hotel-Sin-Fondo.png" alt="Logo del hotel">
+            <p><img src="https://i.ibb.co/3pcrNsx/png-transparent-computer-icons-logo-instagram-black-desktop-wallpaper-smile.png" alt="Logo Instagram">@ms_gastro_bar</p>
+            <p><img src="https://i.ibb.co/3pcrNsx/png-transparent-computer-icons-logo-instagram-black-desktop-wallpaper-smile.png" alt="Logo Instagram">@hostelboutiquebyguz</p> 
+        </div>
+        <div class="footer-info">
+            <p>Dirección: CL. 4A #13 40 LOTE 7</p>
+            <p>Entrada Parrots - Rivera, Huila</p>
+            <p>Hostel: (+57) 313 285 1619</p>
+            <p>Restaurante: (+57) 320 963 3119</p>
+            <p>Correo electrónico: negociosmarsersas@gmail.com</p>
+        </div>
+        <div class="footer-date">
+            <p id="current-date"></p>
+        </div>
+    </div>
+    </footer>
+
+</body>
+</html>

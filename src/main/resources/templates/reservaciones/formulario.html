@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Reservación</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="https://i.ibb.co/fYZRk2d/Logo-Hotel.jpg" type="image/x-icon">
+    
+        <link rel="stylesheet" href="/css/reservaciones.css" />
+        <link rel="stylesheet" href="/css/csshamburguesa.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script defer src="/js/index.js"></script>
+        <script defer type="text/javascript">
+          function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+              pageLanguage: 'es', // El idioma en el que está escrita tu página
+              includedLanguages: 'en,es,pt,fr', // Los idiomas a los que el usuario puede cambiar
+              layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+          }
+        </script>
+        <script defer type="text/javascript"
+          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+        </script>
+</head>
+<body>
+    <header class="header">
+    
+        <nav class="nav">  
+          <a th:href="@{/}"><img src="https://i.ibb.co/hdZxgL6/Logo-Hotel-Sin-Fondo.png" alt="Logo del Hotel" class="logo nav-link"></a> 
+          <button class="nav-toggle" aria-label="Abrir menú">
+            <img src="https://i.ibb.co/dtdvY67/hamburguesa.png" alt="Menu">
+          </button>
+          <ul class="nav-menu">
+            <li class="nav-menu-item">
+                <a th:href="@{/reservaciones}" class="nav-menu-link nav-link nav-menu-link_active"
+                  >Reservaciones</a>
+            <li class="nav-menu-item">
+              <a th:href="@{/marser}" class="nav-menu-link nav-link">Marser</a>
+            </li>
+            <li class="nav-menu-item">
+              <a th:href="@{/galeria}" class="nav-menu-link nav-link">Galería</a>
+            </li>
+            <li class="nav-menu-item">
+              <a th:href="@{/nosotros}" class="nav-menu-link nav-link">Nosotros</a>
+            </li>
+            <li class="nav-menu-item">
+                <a th:href="@{/}" class="nav-menu-link nav-link">Inicio</a>
+              </li>
+            </li>
+            <li class="nav-menu-item">
+                <a sec:authorize="!isAuthenticated()" th:href="@{/login}" class="nav-menu-link nav-link"><img src="https://i.ibb.co/RYGs74X/Login.png" alt="Login"></a>
+                            <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="action_btn nav-menu-link nav-link"><img src="https://i.ibb.co/Hg0Gzqb/logout.png" alt="Cerrar Sesión"></a>        
+                    </li>
+            <li class="nav-menu-item">
+              <a class="nav-menu-link nav-link"><div id="google_translate_element"></div></a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+
+      <main>
+<div class="container mt-5">
+    <h2>Agenda Tu Reservación</h2>
+
+    <form th:action="@{/reservaciones/crear}" th:object="${reservacion}" method="post" onsubmit="return validateForm()">
+        <div class="form-group">
+            <label for="tipoReservacion">Tipo de Reservación:</label>
+            <select class="form-control" id="tipoReservacion" th:field="*{tipoReservacion}" required>
+                <option value="" selected >Selecciona el tipo</option>
+                <option value="Habitación">Habitación</option>
+                <option value="Terraza zona recreativa">Terraza zona recreativa</option>
+                <option value="Terraza Restaurante">Terraza Restaurante</option>
+                <option value="Zona Recreativa">Zona Recreativa</option>
+                <option value="Kiosko">Kiosko</option>
+                <option value="Bar">Bar</option>
+            </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="tipoIdentificacion">Tipo de Identificación:</label>
+          <select class="form-control" id="tipoIdentificacion" required>
+              <option value="" disabled selected>Selecciona el tipo</option>
+              <option value="Cedula Ciudadanía">C.C.</option>
+              <option value="Cedula Extrangería">C.E.</option>
+              <option value="Documento Nacional de Identidad">D.N.I.</option>
+          </select>
+      </div>
+
+      <div class="form-group">
+        <label for="numeroID">Numero de Identificacion:</label>
+        <input type="text" class="form-control" id="numeroID" placeholder="Ingrese el Numero de Identificacion" required />
+      </div>
+
+        <div class="form-group">
+            <label for="fechaHoraInicio">Fecha y Hora de Inicio:</label>
+            <input type="datetime-local" class="form-control" id="fechaHoraInicio" th:field="*{fechaHoraInicio}" required />
+        </div>
+
+        <div class="form-group">
+            <label for="fechaHoraSalida">Fecha y Hora de Salida:</label>
+            <input type="datetime-local" class="form-control" id="fechaHoraSalida" th:field="*{fechaHoraSalida}" required />
+        </div>
+
+        <div th:if="${reservacion.tipoReservacion == 'Habitación'}" class="form-group">
+            <label for="noches">Noches:</label>
+            <input type="number" class="form-control" id="noches" th:field="*{noches}" required />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Guardar Reservación</button>
+    </form>
+</div>
+</main>
+<footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+          <img src="https://i.ibb.co/hdZxgL6/Logo-Hotel-Sin-Fondo.png" alt="Logo del hotel">
+          <p><img src="https://i.ibb.co/3pcrNsx/png-transparent-computer-icons-logo-instagram-black-desktop-wallpaper-smile.png" alt="Logo Instagram">@ms_gastro_bar</p>
+          <p><img src="https://i.ibb.co/3pcrNsx/png-transparent-computer-icons-logo-instagram-black-desktop-wallpaper-smile.png" alt="Logo Instagram">@hostelboutiquebyguz</p> 
+      </div>
+      <div class="footer-info">
+          <p>Dirección: CL. 4A #13 40 LOTE 7</p>
+          <p>Entrada Parrots - Rivera, Huila</p>
+          <p>Hostel: (+57) 313 285 1619</p>
+          <p>Restaurante: (+57) 320 963 3119</p>
+          <p>Correo electrónico: negociosmarsersas@gmail.com</p>
+      </div>
+      <div class="footer-date">
+          <p id="current-date"></p>
+      </div>
+  </div>
+  </footer>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    function validateForm() {
+        var fechaHoraInicio = new Date(document.getElementById('fechaHoraInicio').value);
+        var fechaHoraSalida = new Date(document.getElementById('fechaHoraSalida').value);
+
+        if (fechaHoraInicio >= fechaHoraSalida) {
+            alert('La fecha y hora de inicio debe ser anterior a la fecha y hora de salida.');
+            return false;
+        }
+
+        return true;
+    }
+    /*]]>*/
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+        // Ocultar la opción "Selecciona el tipo" al cargar la página
+        var tipoReservacion = document.getElementById('tipoReservacion' , 'tipoIdentificacion');
+        tipoReservacion.querySelector('option[value=""]').style.display = 'none';
+    });
+  document.getElementById('tipoReservacion', 'tipoIdentificacion').addEventListener('change', function () {
+      var selectedOption = this.value;
+      if (selectedOption === "") {
+          // Si se selecciona "Selecciona el tipo", muestra un mensaje de error o realiza alguna acción.
+          alert('Por favor, selecciona un tipo válido');
+          this.value = ""; // Puedes restablecer la selección a la opción por defecto si lo deseas.
+      }
+  });
+</script>
+</body>
+</html>
+
+

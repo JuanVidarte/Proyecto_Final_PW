@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Reservaciones</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="icon" href="https://i.ibb.co/fYZRk2d/Logo-Hotel.jpg" type="image/x-icon">
+    
+        <link rel="stylesheet" href="/css/reservaciones.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/css/csshamburguesa.css" />
+
+
+        <script defer src="/js/index.js"></script>
+        <script defer type="text/javascript">
+          function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+              pageLanguage: 'es', // El idioma en el que está escrita tu página
+              includedLanguages: 'en,es,pt,fr', // Los idiomas a los que el usuario puede cambiar
+              layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+          }
+        </script>
+        <script defer type="text/javascript"
+          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+        </script>
+</head>
+<body>
+    <header class="header">
+    
+        <nav class="nav">  
+          <a th:href="@{/}"><img src="https://i.ibb.co/hdZxgL6/Logo-Hotel-Sin-Fondo.png" alt="Logo del Hotel" class="logo nav-link"></a> 
+          <button class="nav-toggle" aria-label="Abrir menú">
+            <img src="https://i.ibb.co/dtdvY67/hamburguesa.png" alt="Menu">
+          </button>
+          <ul class="nav-menu">
+            <li class="nav-menu-item">
+                <a th:href="@{/reservaciones}" class="nav-menu-link nav-link nav-menu-link_active"
+                  >Reservaciones</a>
+            <li class="nav-menu-item">
+              <a th:href="@{/marser}" class="nav-menu-link nav-link">Marser</a>
+            </li>
+            <li class="nav-menu-item">
+              <a th:href="@{/galeria}" class="nav-menu-link nav-link">Galería</a>
+            </li>
+            <li class="nav-menu-item">
+              <a th:href="@{/nosotros}" class="nav-menu-link nav-link">Nosotros</a>
+            </li>
+            <li class="nav-menu-item">
+                <a th:href="@{/}" class="nav-menu-link nav-link">Inicio</a>
+              </li>
+            </li>
+            <li class="nav-menu-item">
+                <a sec:authorize="!isAuthenticated()" th:href="@{/login}" class="nav-menu-link nav-link"><img src="https://i.ibb.co/RYGs74X/Login.png" alt="Login"></a>
+                            <a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="action_btn nav-menu-link nav-link"><img src="https://i.ibb.co/Hg0Gzqb/logout.png" alt="Cerrar Sesión"></a>        
+                    </li>
+            <li class="nav-menu-item">
+              <a class="nav-menu-link nav-link"><div id="google_translate_element"></div></a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+<div class="container mt-5">
+    <h2>Reservaciones</h2>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Tipo de Reservación</th>
+            <th>Fecha y Hora de Inicio</th>
+            <th>Fecha y Hora de Salida</th>
+            <th>Noches</th>
+            <th>Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="reservacion, stat : ${reservaciones}">
+            <td th:text="${reservacion.tipoReservacion}"></td>
+            <td th:text="${#temporals.format(reservacion.fechaHoraInicio, 'dd-MM-yyyy HH:mm')}"></td>
+            <td th:text="${#temporals.format(reservacion.fechaHoraSalida, 'dd-MM-yyyy HH:mm')}"></td>
+            <td th:text="${reservacion.tipoReservacion == 'Habitación' ? diferenciasDeDias[stat.index] : reservacion.noches}"></td>
+            <td>
+                <a th:href="@{/reservaciones/eliminar/{id}(id=${reservacion.id})}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de eliminar esta reservación?')">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a th:href="@{/reservaciones/crear}" class="btn btn-success">Agregar Reservación</a>
+</div>
+</main>
+<footer>
+    <div class="footer-content">
+      <div class="footer-logo">
+          <img src="https://i.ibb.co/hdZxgL6/Logo-Hotel-Sin-Fondo.png" alt="Logo del hotel">
+          <p><img src="https://i.ibb.co/3pcrNsx/png-transparent-computer-icons-logo-instagram-black-desktop-wallpaper-smile.png" alt="Logo Instagram">@ms_gastro_bar</p>
+          <p><img src="https://i.ibb.co/3pcrNsx/png-transparent-computer-icons-logo-instagram-black-desktop-wallpaper-smile.png" alt="Logo Instagram">@hostelboutiquebyguz</p> 
+      </div>
+      <div class="footer-info">
+          <p>Dirección: CL. 4A #13 40 LOTE 7</p>
+          <p>Entrada Parrots - Rivera, Huila</p>
+          <p>Hostel: (+57) 313 285 1619</p>
+          <p>Restaurante: (+57) 320 963 3119</p>
+          <p>Correo electrónico: negociosmarsersas@gmail.com</p>
+      </div>
+      <div class="footer-date">
+          <p id="current-date"></p>
+      </div>
+  </div>
+  </footer>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

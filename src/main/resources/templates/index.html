@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Hostel Boutique ByGuz</title>
+        <link rel="icon" href="https://i.ibb.co/fYZRk2d/Logo-Hotel.jpg" type="image/x-icon">
+    
+        <link rel="stylesheet" href="/css/style.css" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+        <script defer src="/js/index.js"></script>
+        <script defer type="text/javascript">
+          function googleTranslateElementInit() {
+            new google.translate.TranslateElement({
+              pageLanguage: 'es', // El idioma en el que está escrita tu página
+              includedLanguages: 'en,es,pt,fr', // Los idiomas a los que el usuario puede cambiar
+              layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+            }, 'google_translate_element');
+          }
+        </script>
+        <script defer type="text/javascript"
+          src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
+        </script>
+      </head>
+<body>
+  <header class="header">
+    
+    <nav class="nav">  
+      <a th:href="@{/}"><img src="https://i.ibb.co/hdZxgL6/Logo-Hotel-Sin-Fondo.png" alt="Logo del Hotel" class="logo nav-link"></a> 
+      <button class="nav-toggle" aria-label="Abrir menú">
+        <img src="https://i.ibb.co/dtdvY67/hamburguesa.png" alt="Menu">
+      </button>
+      <ul class="nav-menu">
+        <li class="nav-menu-item">
+          <a th:href="@{/reservaciones}" class="nav-menu-link nav-link">Rerservaciones</a>
+        </li>
+        <li class="nav-menu-item">
+          <a th:href="@{/marser}" class="nav-menu-link nav-link">Marser</a>
+        </li>
+        <li class="nav-menu-item">
+          <a th:href="@{/galeria}" class="nav-menu-link nav-link">Galería</a>
+        </li>
+        <li class="nav-menu-item">
+          <a th:href="@{/nosotros}" class="nav-menu-link nav-link">Nosotros</a>
+        </li>
+        <li class="nav-menu-item">
+          <a th:href="@{/}" class="nav-menu-link nav-link nav-menu-link_active"
+            >Inicio</a>
+        </li>
+        <li class="nav-menu-item">
+<a sec:authorize="!isAuthenticated()" th:href="@{/login}" class="nav-menu-link nav-link"><img src="https://i.ibb.co/RYGs74X/Login.png" alt="Login"></a>
+			<a sec:authorize="isAuthenticated()" th:href="@{/logout}" class="action_btn nav-menu-link nav-link"><img src="https://i.ibb.co/Hg0Gzqb/logout.png" alt="Cerrar Sesión"></a>        
+    </li>
+        <li class="nav-menu-item">
+          <a class="nav-menu-link nav-link"><div id="google_translate_element"></div></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  
+  
+      <div class="carrusel-box">
+        <ul>
+            <li>
+                <img src="https://i.ibb.co/8bgYyrh/Carrusel-Foto3.jpg" alt="Foto Hotel Hospedaje">
+            </li>
+            <li>
+                <img src="https://i.ibb.co/xHg1jYV/Carrusel-Foto2.jpg" alt="Foto Hotel Zona Recreacion">
+            </li>
+            <li>
+                <img src="https://i.ibb.co/9gKxhY2/Carrusel-Foto4.jpg" alt="Foto Hotel Comodidad Habitaciones">
+            </li>
+        </ul>
+    </div>
+
+          <section class="services">
+            <h2>Servicios</h2>
+            <ul>
+                <li>• Alojamiento</li>
+                <li>• Restaurante-Bar</li>
+                <li>• Piscina</li>
+                <li>• Zona billar</li>
+                <li>• Pista de Baile</li>
+                <li>• Mesas Ping Pong</li>
+                <li>• Wifi</li>
+                <li>• Teléfono</li>
+                <!-- Agrega más servicios según sea necesario -->
+            </ul>
+        </section>
+    
+        <section class="parking">
+            <h2>Estacionamiento</h2>
+            <li>✔ ¡Gratis! - Estacionamiento privado. Es necesario reservar.</li>
+        </section>
+    
+        <section class="check-in-out">
+            <h2>Hora de Ingreso y Salida</h2>
+            <li> Servicio 24 Horas Fines de Semana y Festivos</li>
+        </section>
+    
+        <section class="payment">
+            <h2>Formas de Pago</h2>
+            <li>✔ Dinero en efectivo</li>
+            <li>✔ Tarjetas débito</li>
+            <li>✔ Tarjeta de credito</li>
+        </section>
+    
+        <section class="extras">
+            <h2>☎ Adicionales</h2>
+            <li>Puede aplicarse un recargo por cada persona o cama adicional, según la disponibilidad y/o las políticas del hotel.</li>
+        </section>
+    
+        <section class="pets">
+            <h2>シ Mascotas</h2>
+            <li>Aquí puedes informar sobre la política de mascotas en el hotel.</li>
+        </section>
+    
+        <section class="hotel-description">
+            <li>Nuestro hotel de vanguardia, ubicado estratégicamente en el corazón de la ciudad, fusiona la sofisticación contemporánea con la eficiencia funcional. El vestíbulo, con su diseño minimalista y tecnología integrada, crea una experiencia de registro fluida. Las habitaciones, diseñadas con atención a los detalles ergonómicos y equipadas con sistemas de automatización, ofrecen un refugio de lujo con vistas panorámicas y comodidades de última generación. El restaurante, respaldado por un enfoque culinario de alta gama y una plataforma de pedidos electrónica, proporciona experiencias gastronómicas personalizadas. El bar, con su carta de cócteles digitales, es un espacio de encuentro inteligente y conectado. Nuestro hotel redefine la hospitalidad a través de la convergencia de diseño contemporáneo, tecnología de vanguardia y servicios personalizados, ofreciendo una experiencia integral que satisface las demandas de los viajeros modernos.</li>
+        </section>
+    
+        <div id="map"></div>
+<script src="/js/maps.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDaeWicvigtP9xPv919E-RNoxfvC-Hqik&callback=iniciarMap"></script>
+          </main>
+          
+      <footer>
+        <div class="footer-content">
+          <div class="footer-logo">
+              <img src="https://i.ibb.co/hdZxgL6/Logo-Hotel-Sin-Fondo.png" alt="Logo del hotel">
+              <p><img src="https://i.ibb.co/3pcrNsx/png-transparent-computer-icons-logo-instagram-black-desktop-wallpaper-smile.png" alt="Logo Instagram">@ms_gastro_bar</p>
+              <p><img src="https://i.ibb.co/3pcrNsx/png-transparent-computer-icons-logo-instagram-black-desktop-wallpaper-smile.png" alt="Logo Instagram">@hostelboutiquebyguz</p> 
+          </div>
+          <div class="footer-info">
+              <p>Dirección: CL. 4A #13 40 LOTE 7</p>
+              <p>Entrada Parrots - Rivera, Huila</p>
+              <p>Hostel: (+57) 313 285 1619</p>
+              <p>Restaurante: (+57) 320 963 3119</p>
+              <p>Correo electrónico: negociosmarsersas@gmail.com</p>
+          </div>
+          <div class="footer-date">
+              <p id="current-date"></p>
+          </div>
+      </div>
+      </footer>
+</body>
+</html>
